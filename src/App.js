@@ -33,13 +33,17 @@ const App = () => {
       )
     }
   }
-
+  const removeAll =() => {
+    
+    setCartItems([])
+  }
   return (
   <div className="App">
-    <Header></Header>
+    <Header countCartItems={cartItems.length}></Header>
     <div className="row">
     <Main onAdd={onAdd} products={products} />
-      <Basket onRemove={onRemove} onAdd={onAdd} cartItems={cartItems}/>
+      <Basket onRemove={onRemove} onAdd={onAdd}
+      removeAll={removeAll} cartItems={cartItems}/>
     </div>
   </div>
   )

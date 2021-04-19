@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Basket = (props) => {
-   const {cartItems, onAdd, onRemove} = props
+   const {cartItems, onAdd, onRemove, removeAll} = props
    const itemPrice = cartItems.reduce((a, c) => a+ c.price * c.qty, 0);
    const taxPrice = itemPrice * 0.14;
    const shippingPrice = itemPrice > 2000 ? 0 : 50;
@@ -42,9 +42,17 @@ const Basket = (props) => {
                     <div className="col-1 text-right">${shippingPrice.toFixed(2)}</div>
                 </div>
                 <div className="row">
-                    <div className="col-2">Total Price</div>
-                    <div className="col-1 text-right">${totalPrice.toFixed(2)}</div>
-                </div>
+                    <div className="col-2">
+                        <strong>Total Price</strong>
+                        </div>
+                    <div className="col-1 text-right">
+                        <strong>${totalPrice.toFixed(2)}</strong>
+                        </div>
+                    </div>
+                    <hr />
+                    <div className="row">
+                        <button onClick={() => removeAll()}>ClearAll</button>
+                    </div>
                 </>
             )}
         </aside>
